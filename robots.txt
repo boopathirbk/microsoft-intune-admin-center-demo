@@ -1,0 +1,8 @@
+# Robots.txt for Microsoft Intune Admin Center Demo & Simulator
+# https://boopathirbk.github.io/microsoft-intune-admin-center-demo/
+
+User-agent: *
+Allow: /
+
+# Canonical XML Sitemap
+Sitemap: https://boopathirbk.github.io/microsoft-intune-admin-center-demo/sitemap.xml

@@ -1,0 +1,358 @@
+/* ============================================================
+   Responsive Breakpoints
+   Desktop-first, matching Intune admin center behavior
+   ============================================================ */
+
+/* --- Tablet (768px - 1199px) --- */
+@media (max-width: 1199px) {
+  #app {
+    grid-template-columns: var(--nav-width-collapsed) 1fr;
+  }
+
+  .nav-rail {
+    width: var(--nav-width-collapsed);
+  }
+
+  .nav-item__label,
+  .nav-section-label,
+  .nav-item__chevron {
+    display: none;
+  }
+
+  .nav-group {
+    max-height: 0 !important;
+  }
+
+  .nav-divider {
+    margin: var(--space-sm) var(--space-xs);
+  }
+
+  .nav-item {
+    justify-content: center;
+    padding: 0;
+    height: 40px;
+  }
+
+  .nav-item.active::before {
+    top: 8px;
+    bottom: 8px;
+  }
+
+  /* Show tooltip on hover for collapsed nav */
+  .nav-item {
+    position: relative;
+  }
+
+  .nav-item[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: calc(var(--nav-width-collapsed) + 4px);
+    top: 50%;
+    transform: translateY(-50%);
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--color-neutral-14);
+    color: var(--color-text-on-dark);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+    z-index: var(--z-tooltip);
+    box-shadow: var(--shadow-8);
+  }
+
+  .nav-item[data-tooltip]:hover::after {
+    opacity: 1;
+  }
+
+  .command-bar {
+    padding: 0 var(--space-base);
+  }
+
+  .breadcrumb-bar {
+    padding: var(--space-md) var(--space-base);
+  }
+
+  .page-content {
+    padding: 0 var(--space-base) var(--space-base);
+  }
+
+  .tile-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+
+  .app-header__search {
+    max-width: 300px;
+  }
+
+  .app-header__user-info {
+    display: none;
+  }
+}
+
+/* --- Phone (< 768px) --- */
+@media (max-width: 767px) {
+  .app-header__search {
+    display: none;
+  }
+
+  .app-header__brand-text {
+    font-size: 13px;
+  }
+
+  #app {
+    grid-template-columns: 1fr;
+    grid-template-rows: var(--header-height) 1fr;
+    grid-template-areas:
+      "header"
+      "main";
+  }
+
+  /* Nav becomes an overlay */
+  .nav-rail {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    bottom: 0;
+    width: var(--nav-width-expanded);
+    transform: translateX(-100%);
+    transition: transform var(--transition-slow);
+    z-index: var(--z-overlay);
+    box-shadow: var(--shadow-64);
+  }
+
+  .nav-rail.mobile-open {
+    transform: translateX(0);
+  }
+
+  /* Show labels again in mobile overlay */
+  .nav-rail.mobile-open .nav-item__label,
+  .nav-rail.mobile-open .nav-section-label,
+  .nav-rail.mobile-open .nav-item__chevron {
+    display: block;
+  }
+
+  .nav-rail.mobile-open .nav-item {
+    justify-content: flex-start;
+    padding: 0 var(--space-base);
+    height: 36px;
+  }
+
+  .nav-rail.mobile-open .nav-group.open {
+    max-height: 2000px !important;
+  }
+
+  .nav-rail.mobile-open .nav-divider {
+    margin: var(--space-sm) var(--space-base);
+  }
+
+  /* Mobile nav backdrop */
+  .nav-backdrop {
+    display: none;
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--color-bg-overlay);
+    z-index: calc(var(--z-overlay) - 1);
+  }
+
+  .nav-backdrop.visible {
+    display: block;
+  }
+
+  /* Adjust content for mobile */
+  .command-bar {
+    padding: 0 var(--space-md);
+    overflow-x: auto;
+  }
+
+  .command-bar__search {
+    min-width: 150px;
+  }
+
+  .breadcrumb-bar {
+    padding: var(--space-sm) var(--space-md);
+    font-size: var(--font-size-xs);
+  }
+
+  .page-content {
+    padding: 0 var(--space-md) var(--space-md);
+  }
+
+  .page-title {
+    font-size: var(--font-size-md);
+  }
+
+  /* Tiles stack on mobile */
+  .tile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Data grid becomes responsive */
+  .data-grid-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .data-grid {
+    min-width: 600px;
+  }
+
+  /* Blade becomes full width */
+  .blade-panel {
+    width: 100vw;
+    max-width: 100vw;
+  }
+
+  /* Dialog shrinks */
+  .dialog {
+    min-width: auto;
+    max-width: calc(100vw - 32px);
+    margin: var(--space-base);
+  }
+
+  /* Hide some header elements */
+  .app-header__brand-text {
+    display: none;
+  }
+
+  /* Notification center full width */
+  .notification-center {
+    width: 100vw;
+    border-radius: 0;
+  }
+
+  /* Platform selector */
+  .platform-selector {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Wizard steps wrap */
+  .wizard__steps {
+    padding: var(--space-base);
+  }
+
+  .wizard-step__label {
+    display: none;
+  }
+
+  /* Adjust form elements */
+  .kv-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-xs) 0;
+  }
+
+  .kv-grid dd {
+    margin-bottom: var(--space-sm);
+  }
+
+  /* Grid toolbar stacks */
+  .grid-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .grid-toolbar__search {
+    min-width: auto;
+  }
+
+  /* Bulk action bar wraps */
+  .bulk-action-bar {
+    flex-wrap: wrap;
+  }
+
+  .toast-container {
+    left: var(--space-md);
+    right: var(--space-md);
+    max-width: none;
+  }
+
+  .toast {
+    min-width: auto;
+    max-width: none;
+  }
+}
+
+/* --- Extra small phone (< 480px) --- */
+@media (max-width: 479px) {
+  .app-header {
+    padding: 0 var(--space-sm);
+    gap: var(--space-sm);
+  }
+
+  .app-header__toggle {
+    width: 36px;
+    height: 36px;
+  }
+
+  .app-header__action-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .platform-selector {
+    grid-template-columns: 1fr;
+  }
+
+  .content-card {
+    padding: var(--space-base);
+  }
+
+  .wizard__body {
+    padding: var(--space-base);
+  }
+
+  .wizard__footer {
+    padding: var(--space-sm) var(--space-base);
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .wizard__footer-left,
+  .wizard__footer-right {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .wizard__footer-left .btn,
+  .wizard__footer-right .btn {
+    flex: 1;
+  }
+}
+
+/* --- Print --- */
+@media print {
+  .nav-rail,
+  .app-header,
+  .command-bar,
+  .toast-container,
+  .blade-overlay,
+  .blade-panel,
+  .dialog-overlay {
+    display: none !important;
+  }
+
+  #app {
+    display: block;
+  }
+
+  .main-content {
+    overflow: visible;
+  }
+
+  .page-content {
+    overflow: visible;
+    padding: 0;
+  }
+}
