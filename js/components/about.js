@@ -238,7 +238,7 @@ export function showAboutLabModal(defaultTab = 'contents') {
           </h4>
           <ul style="margin:0;padding-left:18px;color:var(--color-text-secondary);display:flex;flex-direction:column;gap:6px;">
             <li><strong>Core:</strong> Vanilla JavaScript (ES6 Modules), HTML5, Custom CSS Variables</li>
-            <li><strong>Design System:</strong> Microsoft Fluent 2 System & `@fluentui/svg-icons`</li>
+            <li><strong>Design System:</strong> Microsoft Fluent 2 System &amp; <code>@fluentui/svg-icons</code></li>
             <li><strong>Storage & State:</strong> Local browser <code>localStorage</code> with client-side CSV exports</li>
             <li><strong>Privacy:</strong> 100% In-browser execution. Zero telemetry, trackers, or cloud calls.</li>
             <li><strong>License:</strong> MIT Open Source License</li>
