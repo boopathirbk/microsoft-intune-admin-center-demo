@@ -934,6 +934,100 @@
   white-space: nowrap;
 }
 
+/* Header GitHub Star Button */
+.app-header__github-star-btn {
+  width: auto;
+  height: 28px;
+  padding: 0 10px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  font-size: 11.5px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.app-header__github-star-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.app-header__github-star-btn svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+.app-header__github-star-icon {
+  color: #FFB900;
+  font-size: 13px;
+  line-height: 1;
+}
+
+[data-theme="light"] .app-header__github-star-btn {
+  background: #F3F2F1;
+  border-color: #E1DFDD;
+  color: #24292e;
+}
+
+[data-theme="light"] .app-header__github-star-btn:hover {
+  background: #EDEBE9;
+  border-color: #C8C6C4;
+}
+
+/* Header About Lab Button */
+.app-header__about-btn {
+  width: auto;
+  height: 28px;
+  padding: 0 10px;
+  border-radius: 14px;
+  background: rgba(0, 120, 212, 0.12);
+  border: 1px solid rgba(0, 120, 212, 0.4);
+  color: #5CAEE5;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.app-header__about-btn:hover {
+  background: rgba(0, 120, 212, 0.22);
+  border-color: rgba(0, 120, 212, 0.65);
+  color: #8AD2FF;
+  transform: translateY(-1px);
+}
+
+.app-header__about-btn svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+[data-theme="light"] .app-header__about-btn {
+  background: #EFF6FC;
+  border-color: #C7E0F4;
+  color: #0078D4;
+}
+
+[data-theme="light"] .app-header__about-btn:hover {
+  background: #DEECF9;
+  color: #004578;
+}
+
 .app-header__study-btn:hover {
   background: rgba(255, 185, 0, 0.24);
   border-color: rgba(255, 185, 0, 0.75);

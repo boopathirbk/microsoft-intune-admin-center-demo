@@ -59,9 +59,17 @@
       {
         "@type": "LearningResource",
         "@id": "https://boopathirbk.github.io/microsoft-intune-admin-center-demo/#learningresource",
-        "name": "MD-102: Endpoint Administrator Interactive Study Sandbox",
+        "name": "MD-102: Endpoint Administrator Interactive Study Sandbox & Simulator",
         "educationalLevel": "Professional Certification (MD-102)",
         "learningResourceType": "Interactive Simulation Lab",
+        "assesses": [
+          "Deploy and manage endpoints with Microsoft Intune",
+          "Implement compliance policies and configuration profiles",
+          "Protect endpoints with BitLocker, Windows LAPS, and Microsoft Defender",
+          "Deploy and protect applications with Intune Mobile Application Management (MAM)",
+          "Plan and implement Windows Autopilot device deployments",
+          "Configure Windows 365 Cloud PCs and Intune Suite tools"
+        ],
         "about": [
           "Microsoft Intune",
           "Endpoint Management",
@@ -69,9 +77,11 @@
           "Compliance Policies",
           "Configuration Profiles",
           "Endpoint Security",
-          "Windows 365 Cloud PC"
+          "Windows 365 Cloud PC",
+          "MD-102 Certification Exam"
         ],
-        "inLanguage": "en"
+        "inLanguage": "en",
+        "isAccessibleForFree": true
       }
     ]
   }
@@ -86,19 +96,21 @@
 <body>
   <!-- Fallback Semantic Content for Search Engine Crawlers & Screen Readers -->
   <noscript>
-    <div style="padding:20px;font-family:sans-serif;background:#181818;color:#ffffff;">
+    <div style="padding:24px;font-family:sans-serif;background:#181818;color:#ffffff;line-height:1.6;">
       <h1>Microsoft Intune Admin Center (Demo & Simulator)</h1>
-      <p>Interactive study laboratory and simulator for the Microsoft MD-102: Endpoint Administrator certification exam. Created by Boopathi R.</p>
-      <h2>Supported Modules & Features</h2>
+      <p>Free, interactive in-browser study laboratory and simulator designed for the <strong>Microsoft MD-102: Endpoint Administrator</strong> certification exam. Verified against official Microsoft Learn course specifications. Created by Boopathi R.</p>
+      
+      <h2>Core Management Hubs & MD-102 Curriculum Coverage</h2>
       <ul>
-        <li><strong>Devices Hub:</strong> Manage Windows, macOS, iOS, Android endpoints, enrollment, compliance policies, configuration profiles, scripts.</li>
-        <li><strong>Endpoint Security:</strong> Antivirus, Firewall, Disk Encryption (BitLocker), Attack Surface Reduction (ASR), Account Protection, Update Rings.</li>
-        <li><strong>Apps Hub:</strong> Application deployment, App Protection policies (MAM), App Configuration policies, Microsoft 365 Apps.</li>
-        <li><strong>Windows 365:</strong> Cloud PC provisioning policies, Azure network connections, custom images, restore points.</li>
+        <li><strong>Devices Hub:</strong> Manage Windows, macOS, iOS, Android endpoints, enrollment, compliance policies, configuration profiles, scripts. Features 15 remote actions including BitLocker key rotation, Windows LAPS admin password escrow, Remote Lock, Fresh Start, and diagnostics collection.</li>
+        <li><strong>Windows Autopilot:</strong> Deployment profile configuration, batch hardware hash CSV simulation, device synchronization, and Enrollment Status Page (ESP).</li>
+        <li><strong>Endpoint Security:</strong> Antivirus, Defender Firewall, Disk Encryption (BitLocker), Attack Surface Reduction (ASR), Account Protection, and Windows Update Rings with deferrals.</li>
+        <li><strong>Apps Hub:</strong> Win32, Store, and M365 application deployment, App Protection policies (MAM) with DLP encryption, and app configuration profiles.</li>
+        <li><strong>Windows 365:</strong> Cloud PC provisioning policies, Azure network connections, custom gallery images, point-in-time snapshot restores.</li>
         <li><strong>Intune Suite:</strong> Endpoint Privilege Management (EPM), Enterprise App Catalog, Remote Help, Cloud PKI, Tunnel for MAM.</li>
-        <li><strong>Reports & Analytics:</strong> Device compliance, enrollment status, endpoint analytics, and audit logs.</li>
+        <li><strong>Reports & Analytics:</strong> Device compliance reports, enrollment status, endpoint analytics, and audit logs.</li>
       </ul>
-      <p>Please enable JavaScript to use the interactive simulation environment.</p>
+      <p>Please enable JavaScript in your browser to interact with the live simulator.</p>
     </div>
   </noscript>
 
@@ -138,6 +150,19 @@
       <div class="app-header__spacer"></div>
 
       <div class="app-header__actions">
+        <!-- Star on GitHub Button -->
+        <a href="https://github.com/boopathirbk/microsoft-intune-admin-center-demo" target="_blank" rel="noopener noreferrer" class="app-header__github-star-btn" title="Star this project on GitHub (@boopathirbk)" aria-label="Star this project on GitHub">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          <span class="app-header__github-star-text">Star</span>
+          <span class="app-header__github-star-icon">★</span>
+        </a>
+
+        <!-- About this Lab Button -->
+        <button class="app-header__about-btn" id="about-lab-btn" aria-label="About this Intune Lab & MD-102 Coverage" title="About this Lab, Verification & MD-102 Study Guide">
+          <svg fill="currentColor" width="14" height="14" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm0 1a7 7 0 1 1 0 14 7 7 0 0 1 0-14Zm0 3a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm-1 4.5a.5.5 0 0 1 1 0v4.5a.5.5 0 0 1-1 0v-4.5Z"/></svg>
+          <span>About Lab</span>
+        </button>
+
         <!-- Study Purpose Warning / Disclaimer Badge -->
         <button class="app-header__study-btn" id="study-disclaimer-btn" aria-label="Study Purpose Notice" title="Educational Study Lab — Disclaimer & Info">
           <svg fill="currentColor" width="14" height="14" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.56 3.26a.5.5 0 0 1 .88 0l6.5 12a.5.5 0 0 1-.44.74h-13a.5.5 0 0 1-.44-.74l6.5-12Zm1.76-.47a1.5 1.5 0 0 0-2.64 0l-6.5 12A1.5 1.5 0 0 0 3.5 17h13a1.5 1.5 0 0 0 1.32-2.21l-6.5-12ZM10.5 7.5a.5.5 0 0 0-1 0v4a.5.5 0 1 0 1 0v-4Zm.25 6.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"/></svg>

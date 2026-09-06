@@ -21,6 +21,7 @@ import { renderTenantStatus, renderServiceHealth, renderMessageCenter, renderCon
 import { renderTroubleshooting } from './pages/troubleshooting.js';
 import { CopilotAssistant } from './components/copilot.js';
 import { initStudyDisclaimer, showStudyDisclaimerModal, DISCLAIMER_STORAGE_KEY } from './components/disclaimer.js';
+import { initAboutLab, showAboutLabModal } from './components/about.js';
 
 /* ── Global references ── */
 let nav, commandBar, toastManager, notificationCenter, copilotAssistant;
@@ -52,6 +53,9 @@ function init() {
 
   // Initialize Study Purpose disclaimer & first-time cookie notice
   initStudyDisclaimer();
+
+  // Initialize About Lab modal listeners
+  initAboutLab();
 
   // Set up nav toggle
   $('#nav-toggle').addEventListener('click', () => {
@@ -87,7 +91,7 @@ function init() {
   }
 
   // Expose globally for convenience
-  window.IntuneApp = { Store, Collections, router, toastManager, commandBar, resetAndReseed: handleReset, nav, showDisclaimer: showStudyDisclaimerModal };
+  window.IntuneApp = { Store, Collections, router, toastManager, commandBar, resetAndReseed: handleReset, nav, showDisclaimer: showStudyDisclaimerModal, showAbout: showAboutLabModal };
 }
 
 /* ══════════════════════════════════════════════════
@@ -307,6 +311,44 @@ function renderHome() {
     <h1 class="page-title">Intune Study Lab</h1>
     <p class="page-subtitle">MD-102 Endpoint Administrator — Exam study & interview practice environment</p>
 
+    <!-- Lab Overview & MD-102 Verification Banner -->
+    <div class="content-card" style="margin-bottom:20px;background:linear-gradient(135deg, rgba(0, 120, 212, 0.08) 0%, rgba(121, 115, 249, 0.1) 100%);border:1px solid rgba(0, 120, 212, 0.35);">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+        <div style="max-width:680px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+            <span style="font-size:16px;">🎯</span>
+            <strong style="font-size:15px;color:var(--color-text-primary);">About This Interactive Lab & MD-102 Coverage</strong>
+            <span class="app-header__brand-badge" style="font-size:10px;">Zero-Cost Sandbox</span>
+          </div>
+          <p style="margin:0 0 10px 0;font-size:13px;color:var(--color-text-secondary);line-height:1.5;">
+            An interactive simulator designed for students and administrators preparing for the <strong>Microsoft MD-102: Endpoint Administrator</strong> exam. Verified against official Microsoft Learn course modules across 8 management hubs with 15 remote device commands, policy wizards, and zero expiring trial limitations.
+          </p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <button class="btn btn-sm btn-primary" id="home-explore-about-btn" style="display:inline-flex;align-items:center;gap:6px;">
+              ${Icons.info} Explore Lab Details & Verification
+            </button>
+            <a href="https://github.com/boopathirbk/microsoft-intune-admin-center-demo" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-default" style="display:inline-flex;align-items:center;gap:6px;">
+              ⭐ Star on GitHub (@boopathirbk)
+            </a>
+          </div>
+        </div>
+        <div style="display:flex;gap:12px;text-align:center;">
+          <div style="background:var(--color-bg-surface);padding:10px 14px;border-radius:6px;border:1px solid var(--color-border);min-width:80px;">
+            <div style="font-size:18px;font-weight:700;color:var(--color-primary);">77</div>
+            <div style="font-size:11px;color:var(--color-text-secondary);">Active Routes</div>
+          </div>
+          <div style="background:var(--color-bg-surface);padding:10px 14px;border-radius:6px;border:1px solid var(--color-border);min-width:80px;">
+            <div style="font-size:18px;font-weight:700;color:var(--color-success);">15</div>
+            <div style="font-size:11px;color:var(--color-text-secondary);">Remote Actions</div>
+          </div>
+          <div style="background:var(--color-bg-surface);padding:10px 14px;border-radius:6px;border:1px solid var(--color-border);min-width:80px;">
+            <div style="font-size:18px;font-weight:700;color:#FFB900;">100%</div>
+            <div style="font-size:11px;color:var(--color-text-secondary);">Free & Client-Side</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="tile-grid" id="dashboard-tiles"></div>
 
     <div class="content-card">
@@ -331,6 +373,10 @@ function renderHome() {
       <span>This is a study environment — all data is stored locally in your browser's localStorage. Use the <strong>Reset to seeded data</strong> button to restore default mock data.</span>
     </div>
   `;
+
+  $('#home-explore-about-btn')?.addEventListener('click', () => {
+    showAboutLabModal('contents');
+  });
 
   renderDashboardTiles();
   renderComplianceChart();
